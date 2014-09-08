@@ -1,0 +1,56 @@
+! vim: set ft=xdefaults:
+
+xterm*foreground: gray90
+xterm*background: black
+xterm*saveLines: 8192
+xterm*termName: xterm-256color
+! xterm*faceName: :style=Regular:spacing=charcell
+! xterm*faceName: :lang=ar:style=Regular:spacing=mono
+! xterm*faceName: :lang=ar:style=Book:spacing=mono
+xterm*faceName: :family=DejaVu Sans Mono
+xterm*faceSize: 10
+
+! In case the solarized theme wasn't loaded dynamically
+xterm*dynamicColors: true
+
+! ASML Solaris hacks
+!xterm*SimpleMenu*borderColor: gray30
+!xterm*scrollBar: true
+!xterm*toolBar: false
+!
+!! This resource reduces space around the menubar, by eliminating padding in
+!! the enclosing form (Thickness).
+!xterm*form.Thickness: 0
+!
+!! Necessary to restore the erase character to the default (ASCII delete) CDE,
+!! or some ASML scripting sets erase (VERASE) to ^H instead (which causes all
+!! sorts of problems).
+!*ttyModes:
+!
+!! Use the termcap 'kb' or terminfo 'kbs' setting to set the pseudo-TTY's
+!! 'erase' (VERASE), this ensures the two actually match.
+!XTerm*ptyInitialErase: false
+!
+!! Make the backarrow key (sometimes called the "backspace" key) send the TTY's
+!! 'erase' (VERASE) character so that it behaves as expected for most cases.
+!XTerm*backarrowKeyIsErase: true
+!
+!! Allow regular Home/End/Page-Up/Page-Down to be used by the application, using
+!! only the shifted variant for scrolling instead.
+!*VT100.Translations:            #override\n\
+!	~Shift ~Ctrl            <Key>Home:      string("\033[1~")\n\
+!	~Shift ~Ctrl            <Key>End:       string("\033[4~")\n\
+!	~Shift ~Ctrl            <Key>Prior:     string("\033[5~")\n\
+!	~Shift ~Ctrl            <Key>Next:      string("\033[6~")\n\
+!	 Shift ~Ctrl            <Key>Home:      scroll-back(100,page)\n\
+!	 Shift ~Ctrl            <Key>End:       scroll-forw(100,page)\n\
+!	 Shift ~Ctrl            <Key>Prior:     scroll-back(1,page)\n\
+!	 Shift ~Ctrl            <Key>Next:      scroll-forw(1,page)\n\
+!	~Shift  Ctrl            <Key>Home:      string("\033[1;5~")\n\
+!	~Shift  Ctrl            <Key>End:       string("\033[4;5~")\n\
+!	~Shift  Ctrl            <Key>Prior:     string("\033[5;5~")\n\
+!	~Shift  Ctrl            <Key>Next:      string("\033[6;5~")\n\
+!	 Shift  Ctrl            <Key>Home:      string("\033[1;6~")\n\
+!	 Shift  Ctrl            <Key>End:       string("\033[4;6~")\n\
+!	 Shift  Ctrl            <Key>Prior:     string("\033[5;6~")\n\
+!	 Shift  Ctrl            <Key>Next:      string("\033[6;6~")\n
