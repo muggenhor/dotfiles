@@ -1,0 +1,2 @@
+#!/bin/sh
+signify --fifo=$HOME/.signature --kill &
