@@ -1,0 +1,27 @@
+[submodule ".vim/bundle/vim-pathogen"]
+	path = .vim/bundle/vim-pathogen
+	url = https://github.com/tpope/vim-pathogen.git
+[submodule ".vim/bundle/syntastic"]
+	path = .vim/bundle/syntastic
+	url = https://github.com/scrooloose/syntastic.git
+[submodule ".vim/bundle/clang_complete"]
+	path = .vim/bundle/clang_complete
+	url = https://github.com/Rip-Rip/clang_complete.git
+[submodule ".vim/bundle/vim-colors-solarized"]
+	path = .vim/bundle/vim-colors-solarized
+	url = https://github.com/altercation/vim-colors-solarized.git
+[submodule ".vim/bundle/vim-fugitive"]
+	path = .vim/bundle/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git
+[submodule ".vim/bundle/inkpot"]
+	path = .vim/bundle/inkpot
+	url = https://github.com/ciaranm/inkpot.git
+[submodule ".vim/bundle/todo.txt-vim"]
+	path = .vim/bundle/todo.txt-vim
+	url = https://github.com/freitass/todo.txt-vim.git
+[submodule ".vim/bundle/apachelogs.vim"]
+	path = .vim/bundle/apachelogs.vim
+	url = https://github.com/vim-scripts/apachelogs.vim.git
+[submodule ".vim/bundle/tmux.vim"]
+	path = .vim/bundle/tmux.vim
+	url = https://github.com/zaiste/tmux.vim.git

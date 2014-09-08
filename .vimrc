@@ -141,3 +141,10 @@ set undodir=~/.vim/undohist,.
 if isdirectory(expand("~/Private"))
   set viminfo='100,<50,s10,h,n~/Private/.viminfo
 endif
+
+execute pathogen#infect()
+
+let g:solarized_termcolors=256
+let g:solarized_contrast = "high"
+let g:solarized_termtrans = 1
+colorscheme solarized
