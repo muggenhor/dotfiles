@@ -25,3 +25,6 @@
 [submodule ".vim/bundle/tmux.vim"]
 	path = .vim/bundle/tmux.vim
 	url = https://github.com/zaiste/tmux.vim.git
+[submodule ".vim/bundle/securemodelines"]
+	path = .vim/bundle/securemodelines
+	url = https://github.com/ciaranm/securemodelines.git

@@ -4,7 +4,7 @@ set nocompatible        " Use Vim defaults instead of 100% vi compatibility
 set backspace=indent,eol,start  " more powerful backspacing
 
 " Now we set some defaults for the editor
-" We're using http://ciaranm.org/tag/securemodelines instead
+" We're using https://github.com/ciaranm/securemodelines instead
 " set modeline            " Execute Ex, Vi and Vim modelines
 set history=50          " keep 50 lines of command line history
 set ruler               " show the cursor position all the time
