@@ -135,15 +135,20 @@ if [[ -f ~/.projectrc ]]; then
 fi
 
 # enable color support of ls and also add handy aliases
-if [[ -x /usr/bin/dircolors ]]; then
+function _enable_dircolors() {
+    local _DIR_COLOR_F
+
     if [[ -f ~/.dir_colors ]]; then
         _DIR_COLOR_F=~/.dir_colors
     fi
-    eval "`dircolors -b ${_DIR_COLOR_F}`"
+    eval "`$1 -b ${_DIR_COLOR_F}`"
     if [[ -z $LS_COLORS && $TERM = screen-256color-s ]]; then
-        eval "`TERM=screen-256color dircolors -b ${_DIR_COLOR_F}`"
+        eval "`TERM=screen-256color $1 -b ${_DIR_COLOR_F}`"
     fi
-    unset _DIR_COLOR_F
+}
+
+if [[ -x /usr/bin/dircolors ]]; then
+    _enable_dircolors /usr/bin/dircolors
     alias ls='ls --color=auto'
 
     alias grep='grep --color=auto'
@@ -155,6 +160,10 @@ else
     export CLICOLOR=yes
     export LSCOLORS=ExGxFxdxCxDxDxhbadacec
     alias grep='grep --colour=auto'
+fi
+if [[ -z $LS_COLORS ]] && which gdircolors gls &> /dev/null; then
+    _enable_dircolors gdircolors
+    alias ls='gls --color=auto'
 fi
 
 if zmodload zsh/complist 2> /dev/null
