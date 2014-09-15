@@ -142,6 +142,7 @@ if isdirectory(expand("~/Private"))
   set viminfo='100,<50,s10,h,n~/Private/.viminfo
 endif
 
+runtime bundle/vim-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
 
 let g:solarized_termcolors=256
