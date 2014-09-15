@@ -161,7 +161,7 @@ else
     export LSCOLORS=ExGxFxdxCxDxDxhbadacec
     alias grep='grep --colour=auto'
 fi
-if [[ -z $LS_COLORS ]] && which gdircolors gls &> /dev/null; then
+if (( ! ${+LS_COLORS} && ${+commands[gdircolors]} && ${+commands[gls]} )); then
     _enable_dircolors gdircolors
     alias ls='gls --color=auto'
 fi
@@ -246,7 +246,7 @@ then
 	}
 fi
 
-if which host > /dev/null 2>&1 && which ipv6calc > /dev/null 2>&1 && which wakeonlan > /dev/null 2>&1
+if (( ${+commands[host]} && ${+commands[ipv6calc]} && ${+commands[wakeonlan]} ))
 then
 	wake() {
 		local host address mac_eui48
@@ -261,7 +261,7 @@ then
 	compdef '_arguments "*:hosts:_hosts"' wake
 fi
 
-if which snmpget > /dev/null 2>&1
+if (( ${+commands[snmpget]} ))
 then
 	snmpuptime() {
 		local host
@@ -304,7 +304,7 @@ EOF
 }
 compdef '_arguments ":command:_command" "*:processes:_pids"' do-after
 
-if   [[ -x "`which zfs`" ]] ; then
+if   (( ${+commands[zfs]} )) ; then
 	true
 elif [[ -x "/sbin/zfs" ]] ; then
 	ZFS="/sbin/zfs"
@@ -321,7 +321,7 @@ if [[ -n "$ZFS" ]] ; then
 	unset ZFS
 fi
 
-if   [[ -x "`which zpool`" ]] ; then
+if   (( ${+commands[zpool]} )) ; then
 	true
 elif [[ -x "/sbin/zpool" ]] ; then
 	ZPOOL="/sbin/zpool"
