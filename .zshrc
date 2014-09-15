@@ -354,3 +354,26 @@ if [[ -f ~/.aliases && -r ~/.aliases && -s ~/.aliases ]]; then
 	. ~/.aliases
 	unfunction alias
 fi
+
+# optional autojump support, if installed
+if (( ${+commands[autojump]} )); then
+() {
+    local fname
+    local -a fnames
+    fnames+=$HOME/.autojump/etc/profile.d/autojump.zsh  # user-specific config
+    fnames+=/usr/share/autojump/autojump.zsh            # Debian package
+    fnames+=/etc/profile.d/autojump.zsh                 # manual install
+    fnames+=/etc/profile.d/autojump.sh                  # Gentoo port
+    fnames+=/usr/local/share/autojump/autojump.zsh      # FreeBSD port
+    fnames+=/opt/local/etc/profile.d/autojump.zsh       # OSX port
+    if (( ${+commands[brew]} )); then
+        fnames+=`brew --prefix`/etc/autojump.zsh        # OSX brew
+    fi
+    for fname in $fnames; do
+        if [[ -f $fname ]]; then
+            source $fname
+            break
+        fi
+    done
+}
+fi
