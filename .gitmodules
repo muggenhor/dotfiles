@@ -9,7 +9,8 @@
 	url = https://github.com/Rip-Rip/clang_complete.git
 [submodule ".vim/bundle/vim-colors-solarized"]
 	path = .vim/bundle/vim-colors-solarized
-	url = https://github.com/altercation/vim-colors-solarized.git
+	url = https://github.com/muggenhor/vim-colors-solarized.git
+	branch = 256color-fix
 [submodule ".vim/bundle/vim-fugitive"]
 	path = .vim/bundle/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
@@ -27,7 +28,8 @@
 	url = https://github.com/zaiste/tmux.vim.git
 [submodule ".vim/bundle/securemodelines"]
 	path = .vim/bundle/securemodelines
-	url = https://github.com/ciaranm/securemodelines.git
+	url = https://github.com/muggenhor/securemodelines.git
+	branch = list-index
 [submodule ".vim/bundle/vim-git"]
 	path = .vim/bundle/vim-git
 	url = https://github.com/tpope/vim-git.git
