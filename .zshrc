@@ -124,10 +124,13 @@ RPS1="%F{${term_colors[yellow]}}(%D{%Y-%m-%d %H:%M:%S})%f"
 
 function precmd() {
 	# Print info to window title (if the terminal supports it)
-	if [[ -n $termcap[ts] && -n $termcap[fs] ]]; then
-		print -Pn "$termcap[ts]%n@%m: %~$termcap[fs]"
+	local _term_title="${_term_title:-%n@%m: %~}"
+	if (( $+termcap[ts] && $+termcap[fs] )); then
+		print -Pn "$termcap[ts]${_term_title}$termcap[fs]"
+	elif (( $+terminfo[tsl] && $+terminfo[fsl] )); then
+		print -Pn "$terminfo[tsl]${_term_title}$terminfo[fsl]"
 	elif [[ $TERM == (dtterm|screen|xrvt|xterm)* ]]; then
-		print -Pn '\e]0;%n@%m: %~\a'
+		print -Pn "\e]0;${_term_title}\a"
 	fi
 }
 
@@ -202,12 +205,53 @@ fi
 source ${_rc:A:h}/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ${_rc:A:h}/.zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 
-bindkey "\e[1~" beginning-of-line
-bindkey "\e[4~" end-of-line
-bindkey "\e[5~" history-search-backward
-bindkey "\e[6~" history-search-forward
-bindkey "\e[3~" delete-char
-bindkey "\e[2~" quoted-insert
+if (( $+termcap[ho] )); then
+	bindkey $termcap[ho] beginning-of-line
+elif (( $+terminfo[home] )); then
+	bindkey $terminfo[home] beginning-of-line
+fi
+if (( $+termcap[kh] )); then
+	bindkey $termcap[kh] beginning-of-line
+elif (( $+terminfo[khome] )); then
+	bindkey $terminfo[khome] beginning-of-line
+fi
+bindkey "\e[1~" beginning-of-line       # home, xterm binding
+
+if (( $+termcap[@7] )); then
+	bindkey $termcap[@7] end-of-line
+elif (( $+terminfo[kend] )); then
+	bindkey $terminfo[kend] end-of-line
+fi
+bindkey "\e[4~" end-of-line             # end, xterm binding
+
+if (( $+termcap[kP] )); then
+	bindkey $termcap[kP] history-search-backward
+elif (( $+terminfo[kpp] )); then
+	bindkey $terminfo[kpp] history-search-backward
+else
+	bindkey "\e[5~" history-search-backward # page-up fallback
+fi
+if (( $+termcap[kN] )); then
+	bindkey $termcap[kN] history-search-forward
+elif (( $+terminfo[knp] )); then
+	bindkey $terminfo[knp] history-search-forward
+else
+	bindkey "\e[6~" history-search-forward  # page-down fallback
+fi
+if (( $+termcap[kD] )); then
+	bindkey $termcap[kD] delete-char
+elif (( $+terminfo[kdch1] )); then
+	bindkey $terminfo[kdch1] delete-char
+else
+	bindkey "\e[3~" delete-char             # delete fallback
+fi
+if (( $+termcap[kI] )); then
+	bindkey $termcap[kI] quoted-insert
+elif (( $+terminfo[kdch1] )); then
+	bindkey $terminfo[kich1] quoted-insert
+else
+	bindkey "\e[2~" quoted-insert           # insert fallback
+fi
 if (( $+termcap[ku] )); then
 	bindkey $termcap[ku] history-substring-search-up
 elif (( $+terminfo[kcuu1] )); then
@@ -226,14 +270,14 @@ bindkey '^[[A'        history-substring-search-up
 bindkey '^[[B'        history-substring-search-down
 
 # mappings for Ctrl-left-arrow and Ctrl-right-arrow for word moving
-bindkey "\e[1;5C" forward-word
-bindkey "\e[1;5D" backward-word
-bindkey "\e[5C" forward-word
-bindkey "\e[5D" backward-word
-#bindkey "\eOC" forward-word
-#bindkey "\eOD" backward-word
-bindkey "\e\e[C" forward-word
-bindkey "\e\e[D" backward-word
+bindkey "\e[1;5C" forward-word          # VT220 control-right
+bindkey "\e[1;5D" backward-word         # VT220 control-left
+bindkey "\e[5C" forward-word            # PuTTY or Screen control-right
+bindkey "\e[5D" backward-word           # PuTTY or Screen control-left
+#bindkey "\eOC" forward-word            # PuTTY or Screen control-right
+#bindkey "\eOD" backward-word           # PuTTY or Screen control-left
+bindkey "\e\e[C" forward-word           # PuTTY or Screen control-right
+bindkey "\e\e[D" backward-word          # PuTTY or Screen control-left
 
 bindkey "\e[8~" end-of-line
 bindkey "\eOH" beginning-of-line
