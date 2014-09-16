@@ -200,6 +200,7 @@ if [[ -f ~/.ssh/users ]]; then
 fi
 
 source ${_rc:A:h}/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ${_rc:A:h}/.zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 
 bindkey "\e[1~" beginning-of-line
 bindkey "\e[4~" end-of-line
@@ -207,6 +208,22 @@ bindkey "\e[5~" history-search-backward
 bindkey "\e[6~" history-search-forward
 bindkey "\e[3~" delete-char
 bindkey "\e[2~" quoted-insert
+if (( $+termcap[ku] )); then
+	bindkey $termcap[ku] history-substring-search-up
+elif (( $+terminfo[kcuu1] )); then
+	bindkey $terminfo[kcuu1] history-substring-search-up
+fi
+if (( $+termcap[kd] )); then
+	bindkey $termcap[kd] history-substring-search-down
+elif (( $+terminfo[kcud1] )); then
+	bindkey $terminfo[kcud1] history-substring-search-down
+fi
+bindkey -M emacs '^P' history-substring-search-up
+bindkey -M emacs '^N' history-substring-search-down
+bindkey -M vicmd  'k' history-substring-search-up
+bindkey -M vicmd  'j' history-substring-search-down
+bindkey '^[[A'        history-substring-search-up
+bindkey '^[[B'        history-substring-search-down
 
 # mappings for Ctrl-left-arrow and Ctrl-right-arrow for word moving
 bindkey "\e[1;5C" forward-word
