@@ -3,6 +3,7 @@
 zstyle ':completion:*' completer _complete _ignored _correct _approximate
 zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'r:|[._-]=* r:|=*'
 zstyle ':completion:*' use-cache true
+local _rc=${ZDOTDIR:-$HOME}/.zshrc
 
 autoload -Uz compinit
 compinit
@@ -197,6 +198,8 @@ if [[ -f ~/.ssh/users ]]; then
 	_myusers=(${${(f)"$(<~/.ssh/users)"}%%\#*})
 	zstyle ':completion:*' users $_myusers
 fi
+
+source ${_rc:A:h}/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 bindkey "\e[1~" beginning-of-line
 bindkey "\e[4~" end-of-line
