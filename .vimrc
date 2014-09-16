@@ -20,6 +20,9 @@ let g:load_doxygen_syntax = 1
 autocmd Filetype c,cpp set comments^=b:///,b://!
 
 let g:clang_library_path = glob("/usr/lib/*/libclang.so*")
+if empty(g:clang_library_path) " FreeBSD port
+  let g:clang_library_path = glob("/usr/local/llvm*/*/libclang.so*")
+endif
 let g:clang_auto_user_options = '.clang_complete, compile_commands.json, path'
 let g:clang_snippets = 1
 
