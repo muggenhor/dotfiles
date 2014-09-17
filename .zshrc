@@ -250,18 +250,18 @@ fi
 bindkey "\e[4~" end-of-line             # end, xterm binding
 
 if (( $+termcap[kP] )); then
-	bindkey $termcap[kP] history-search-backward
+	bindkey $termcap[kP] history-substring-search-up
 elif (( $+terminfo[kpp] )); then
-	bindkey $terminfo[kpp] history-search-backward
+	bindkey $terminfo[kpp] history-substring-search-up
 else
-	bindkey "\e[5~" history-search-backward # page-up fallback
+	bindkey "\e[5~" history-substring-search-up # page-up fallback
 fi
 if (( $+termcap[kN] )); then
-	bindkey $termcap[kN] history-search-forward
+	bindkey $termcap[kN] history-substring-search-down
 elif (( $+terminfo[knp] )); then
-	bindkey $terminfo[knp] history-search-forward
+	bindkey $terminfo[knp] history-substring-search-down
 else
-	bindkey "\e[6~" history-search-forward  # page-down fallback
+	bindkey "\e[6~" history-substring-search-down  # page-down fallback
 fi
 if (( $+termcap[kD] )); then
 	bindkey $termcap[kD] delete-char
@@ -277,22 +277,8 @@ elif (( $+terminfo[kdch1] )); then
 else
 	bindkey "\e[2~" quoted-insert           # insert fallback
 fi
-if (( $+termcap[ku] )); then
-	bindkey $termcap[ku] history-substring-search-up
-elif (( $+terminfo[kcuu1] )); then
-	bindkey $terminfo[kcuu1] history-substring-search-up
-fi
-if (( $+termcap[kd] )); then
-	bindkey $termcap[kd] history-substring-search-down
-elif (( $+terminfo[kcud1] )); then
-	bindkey $terminfo[kcud1] history-substring-search-down
-fi
-bindkey -M emacs '^P' history-substring-search-up
-bindkey -M emacs '^N' history-substring-search-down
-bindkey -M vicmd  'k' history-substring-search-up
-bindkey -M vicmd  'j' history-substring-search-down
-bindkey '^[[A'        history-substring-search-up
-bindkey '^[[B'        history-substring-search-down
+bindkey '^P' history-substring-search-up
+bindkey '^N' history-substring-search-down
 
 # mappings for Ctrl-left-arrow and Ctrl-right-arrow for word moving
 bindkey "\e[1;5C" forward-word          # VT220 control-right
