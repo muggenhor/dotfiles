@@ -206,8 +206,18 @@ source ${_rc:A:h}/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.z
 source ${_rc:A:h}/.zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 
 # Replace syntax highlighting colors with solarized versions (if we're using solarized)
+_do_repl_colors() {
+	local re_repl_colors="$1"
+	local class="$2"
+	local style="$(eval "echo -n \"\${$class}\"")"
+	while [[ $style =~ "(,|^)[fb]g=${re_repl_colors}(,|\$)" ]]; do
+		style="${style[0,${mbegin[2]}-1]}${term_colors[${match[2]}]}${style[${mend[2]}+1,-1]}"
+	done
+	eval "${class}=${(q)style}"
+}
+
 function {
-	local class style colname color re_repl_colors
+	local class colname color re_repl_colors
 
 	# Find the colors that need to be replaced
 	local -a replace_colors
@@ -222,12 +232,11 @@ function {
 	# Replace them in the syntax highlighting styles
 	for class in ${(k)ZSH_HIGHLIGHT_STYLES}
 	do
-		style=${ZSH_HIGHLIGHT_STYLES[$class]}
-		while [[ $style =~ "[fb]g=${re_repl_colors}(,|\$)" ]]; do
-			style="${style[0,${mbegin[1]}-1]}${term_colors[${match[1]}]}${style[${mend[1]}+1,-1]}"
-		done
-		ZSH_HIGHLIGHT_STYLES[${class}]="${style}"
+		_do_repl_colors "${re_repl_colors}" "ZSH_HIGHLIGHT_STYLES[$class]"
 	done
+
+	_do_repl_colors "${re_repl_colors}" "HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND"
+	_do_repl_colors "${re_repl_colors}" "HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND"
 }
 
 if (( $+termcap[ho] )); then
