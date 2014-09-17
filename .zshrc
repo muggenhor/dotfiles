@@ -205,6 +205,31 @@ fi
 source ${_rc:A:h}/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ${_rc:A:h}/.zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 
+# Replace syntax highlighting colors with solarized versions (if we're using solarized)
+function {
+	local class style colname color re_repl_colors
+
+	# Find the colors that need to be replaced
+	local -a replace_colors
+	for colname in ${(k)term_colors}
+	do
+		if [[ $colname != [fb]g && ${term_colors[$colname]} != $colname ]]; then
+			replace_colors+=$colname
+		fi
+	done
+	re_repl_colors="${replace_colors:+(${(j.|.)replace_colors})}"
+
+	# Replace them in the syntax highlighting styles
+	for class in ${(k)ZSH_HIGHLIGHT_STYLES}
+	do
+		style=${ZSH_HIGHLIGHT_STYLES[$class]}
+		while [[ $style =~ "[fb]g=${re_repl_colors}(,|\$)" ]]; do
+			style="${style[0,${mbegin[1]}-1]}${term_colors[${match[1]}]}${style[${mend[1]}+1,-1]}"
+		done
+		ZSH_HIGHLIGHT_STYLES[${class}]="${style}"
+	done
+}
+
 if (( $+termcap[ho] )); then
 	bindkey $termcap[ho] beginning-of-line
 elif (( $+terminfo[home] )); then
