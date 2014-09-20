@@ -3,7 +3,10 @@
 zstyle ':completion:*' completer _complete _ignored _correct _approximate
 zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'r:|[._-]=* r:|=*'
 zstyle ':completion:*' use-cache true
-local _rc=${ZDOTDIR:-$HOME}/.zshrc
+local _rc="$0"
+if [[ ! -f $_rc ]]; then
+	_rc=${ZDOTDIR:-$HOME}/.zshrc
+fi
 
 autoload -Uz compinit
 compinit
