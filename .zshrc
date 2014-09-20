@@ -425,7 +425,9 @@ if [[ -n "$ZPOOL" ]] ; then
 	unset ZPOOL
 fi
 
-source ~/.zprofile
+if [[ -f ~/.zprofile ]]; then
+	source ~/.zprofile
+fi
 
 # Load C-shell style aliases
 if [[ -f ~/.aliases && -r ~/.aliases && -s ~/.aliases ]]; then
