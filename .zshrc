@@ -4,6 +4,7 @@ zstyle ':completion:*' completer _complete _ignored _correct _approximate
 zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'r:|[._-]=* r:|=*'
 zstyle ':completion:*' use-cache true
 local _rc="$(print -Pn %x)"
+zstyle :compinstall filename $_rc
 
 autoload -Uz compinit
 compinit
