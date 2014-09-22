@@ -166,8 +166,10 @@ else
     export LSCOLORS=ExGxFxdxCxDxDxhbadacec
     alias grep='grep --colour=auto'
 fi
-if (( ! ${+LS_COLORS} && ${+commands[gdircolors]} && ${+commands[gls]} )); then
-    _enable_dircolors gdircolors
+if (( ${+commands[gdircolors]} && ${+commands[gls]} )); then
+    if (( ! ${+LS_COLORS} )); then
+        _enable_dircolors gdircolors
+    fi
     alias ls='gls --color=auto'
 fi
 
