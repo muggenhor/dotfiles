@@ -51,4 +51,7 @@
 	url = https://github.com/tpope/vim-dispatch.git
 [submodule ".vim/bundle/vim-latex"]
 	path = .vim/bundle/vim-latex
-	url = http://git.code.sf.net/p/vim-latex/vim-latex
+	#original
+	#url = http://git.code.sf.net/p/vim-latex/vim-latex
+	#github mirror
+	url = https://github.com/jcf/vim-latex.git
