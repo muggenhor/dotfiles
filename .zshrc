@@ -132,6 +132,17 @@ zstyle ':completion:*' group-name ''
 zstyle ':completion:*:-command-:*:(commands|builtins|reserved-words|aliases)' group-name 'commands'
 zstyle ':completion:*:manuals' separate-sections true 
 
+# Allow nice starting of the webbrowser
+autoload -U pick-web-browser
+zstyle :mime: x-browsers x-www-browser firefox konqueror
+zstyle :mime: tty-browsers www-browser w3m elinks links lynx
+
+# Use file-type associations to "execute" files: i.e. open them with the associated program
+autoload -U zsh-mime-setup
+zstyle ':mime:.(shtml|htm(|l)):' handler 'pick-web-browser %s'
+zstyle ':mime:.(shtml|htm(|l)):' flags ''
+zsh-mime-setup
+
 function precmd() {
 	# Print info to window title (if the terminal supports it)
 	local _term_title="${_term_title:-%n@%m: %~}"
