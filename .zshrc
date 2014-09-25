@@ -1,8 +1,5 @@
 # The following lines were added by compinstall
 
-zstyle ':completion:*' completer _complete _ignored _correct _approximate
-zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'r:|[._-]=* r:|=*'
-zstyle ':completion:*' use-cache true
 local _rc="$(print -Pn %x)"
 zstyle :compinstall filename $_rc
 
@@ -122,6 +119,18 @@ if [[ ${terminfo[colors]} == 256 ]]; then () {
 
 PS1="%F{${term_colors[fg]}}[%B%(?.%F{${term_colors[yellow]}}.%F{${term_colors[red]}})%?%b%F{${term_colors[fg]}}:%B%F{${term_colors[blue]}}%n%F{${term_colors[fg]}}@%F{${term_colors[green]}}%U%m%u%b%F{${term_colors[fg]}}:%B%F{${term_colors[red]}}%2~%b%F{${term_colors[fg]}}]%(!.#.\$)%f "
 RPS1="%F{${term_colors[yellow]}}(%D{%Y-%m-%d %H:%M:%S})%f"
+
+zstyle ':completion:*' auto-description 'specify: %d'
+zstyle ':completion:*' use-cache true
+zstyle ':completion:*' verbose true
+zstyle ':completion:*' completer _complete _ignored _correct _approximate
+zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'r:|[._-]=* r:|=*'
+zstyle ':completion:*:descriptions' format "%F{${term_colors[base2]:-default}}%d%f"
+zstyle ':completion:*:messages' format %d
+zstyle ':completion:*:warnings' format 'No matches: %d'
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*:-command-:*:(commands|builtins|reserved-words|aliases)' group-name 'commands'
+zstyle ':completion:*:manuals' separate-sections true 
 
 function precmd() {
 	# Print info to window title (if the terminal supports it)
