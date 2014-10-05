@@ -174,7 +174,7 @@ function _enable_dircolors() {
 
 if [[ -x /usr/bin/dircolors ]]; then
     _enable_dircolors /usr/bin/dircolors
-    alias ls='ls --color=auto'
+    alias ls='ls -v --color=auto'
 
     alias grep='grep --color=auto'
     #alias fgrep='fgrep --color=auto'
@@ -190,7 +190,7 @@ if (( ${+commands[gdircolors]} && ${+commands[gls]} )); then
     if (( ! ${+LS_COLORS} )); then
         _enable_dircolors gdircolors
     fi
-    alias ls='gls --color=auto'
+    alias ls='gls -v --color=auto'
 fi
 
 if zmodload zsh/complist 2> /dev/null
