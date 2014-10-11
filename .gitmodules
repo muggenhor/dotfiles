@@ -6,8 +6,7 @@
 	url = https://github.com/scrooloose/syntastic.git
 [submodule ".vim/bundle/clang_complete"]
 	path = .vim/bundle/clang_complete
-	url = https://github.com/muggenhor/clang_complete.git
-	branch = clang-lib-file
+	url = https://github.com/Rip-Rip/clang_complete.git
 [submodule ".vim/bundle/vim-colors-solarized"]
 	path = .vim/bundle/vim-colors-solarized
 	url = https://github.com/muggenhor/vim-colors-solarized.git
