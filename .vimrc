@@ -10,6 +10,7 @@ set history=50          " keep 50 lines of command line history
 set ruler               " show the cursor position all the time
 set hlsearch            " highlight all matches of the previous search pattern
 set number              " show line numbers
+set visualbell t_vb=    " disable terminal beep/bell
 
 " Suffixes that get lower priority when doing tab completion for filenames.
 " These are files we are not likely to want to edit or read.

@@ -36,6 +36,7 @@ setopt EXTENDED_GLOB       # Allows usage of ^x, x~y, x# and x## patterns
                            # x~y matches everything that matches x but doesn't match y
                            # x# matches everything that matches pattern x zero or more times
                            # x## matches everything that matches pattern x once or more times
+unsetopt BEEP
 
 if [[ "`uname -o`" = "FreeBSD" && $TERM = screen-256color-s ]]; then
 	# Apparently screen-256color-s doesn't work very well on FreeBSD
