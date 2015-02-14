@@ -53,3 +53,6 @@
 	#url = http://git.code.sf.net/p/vim-latex/vim-latex
 	#github mirror
 	url = https://github.com/jcf/vim-latex.git
+[submodule ".vim/bundle/vim-gnupg"]
+	path = .vim/bundle/vim-gnupg
+	url = https://github.com/jamessan/vim-gnupg.git
