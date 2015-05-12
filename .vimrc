@@ -20,12 +20,17 @@ set suffixes=.bak,~,.swp,.o,.obj,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.i
 let g:load_doxygen_syntax = 1
 autocmd Filetype c,cpp set comments^=b:///,b://!
 
-let g:clang_library_path = glob("/usr/lib/*/libclang.so*")
-if empty(g:clang_library_path) " FreeBSD port
-  let g:clang_library_path = glob("/usr/local/llvm*/*/libclang.so*")
+if has('unix')
+  let g:clang_library_path = glob("/usr/lib/*/libclang.so*")
+  if empty(g:clang_library_path) " FreeBSD port
+    let g:clang_library_path = glob("/usr/local/llvm*/*/libclang.so*")
+  endif
+  let g:clang_auto_user_options = '.clang_complete, compile_commands.json, path'
+  let g:clang_snippets = 1
+else
+  " Prevent loading of the Clang plugin: it causes crashes on Windows
+  let g:clang_complete_loaded = 1
 endif
-let g:clang_auto_user_options = '.clang_complete, compile_commands.json, path'
-let g:clang_snippets = 1
 
 " Vim5 and later versions support syntax highlighting. Uncommenting the next
 " line enables syntax highlighting by default.
