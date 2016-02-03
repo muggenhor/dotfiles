@@ -60,3 +60,6 @@
 	path = .vim/bundle/docker.vim
 	url = https://github.com/muggenhor/docker.vim.git
 	branch = docker-vim
+[submodule ".vim/bundle/Vim-Jinja2-Syntax"]
+	path = .vim/bundle/Vim-Jinja2-Syntax
+	url = https://github.com/Glench/Vim-Jinja2-Syntax.git
