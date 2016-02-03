@@ -69,3 +69,6 @@
 [submodule ".vim/bundle/vim-man"]
 	path = .vim/bundle/vim-man
 	url = https://github.com/vim-utils/vim-man.git
+[submodule ".vim/bundle/vim-airline"]
+	path = .vim/bundle/vim-airline
+	url = https://github.com/vim-airline/vim-airline.git

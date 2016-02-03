@@ -154,6 +154,10 @@ endif
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
 
+if filereadable(expand("~/.vim/bundle/vim-airline/plugin/airline.vim"))
+  set laststatus=2 " Always display a status line when airline provides it
+endif
+
 let g:solarized_termcolors=256
 let g:solarized_contrast = "high"
 let g:solarized_termtrans = 1
