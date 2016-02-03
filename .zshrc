@@ -487,3 +487,8 @@ if (( ${+commands[autojump]} )); then
     done
 }
 fi
+
+viman() {
+	vim -c "Man ${1}${2:+ ${2}}" -c 'silent only'
+}
+compdef '_man' viman

@@ -66,3 +66,6 @@
 [submodule ".vim/bundle/ag.vim"]
 	path = .vim/bundle/ag.vim
 	url = https://github.com/rking/ag.vim.git
+[submodule ".vim/bundle/vim-man"]
+	path = .vim/bundle/vim-man
+	url = https://github.com/vim-utils/vim-man.git
