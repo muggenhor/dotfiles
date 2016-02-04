@@ -32,6 +32,17 @@ else
   let g:clang_complete_loaded = 1
 endif
 
+" Prevent CT_DEVENV's Python version from shadowing the system one
+if exists('$CT_DEVENV_SYSTEM_HOME')
+  let s:path_rebuild = split($PATH, ":")
+  let s:python_loc = index(s:path_rebuild, $CT_DEVENV_SYSTEM_HOME . "/Build/python/python27/bin")
+  if s:python_loc >= 0
+    call add(s:path_rebuild, s:path_rebuild[(s:python_loc)])
+    call remove(s:path_rebuild, s:python_loc)
+    let $PATH = join(s:path_rebuild, ":")
+  endif
+endif
+
 " Vim5 and later versions support syntax highlighting. Uncommenting the next
 " line enables syntax highlighting by default.
 syntax on
@@ -149,6 +160,13 @@ set undodir=~/.vim/undohist,.
 
 if isdirectory(expand("~/Private"))
   set viminfo='100,<50,s10,h,n~/Private/.viminfo
+endif
+
+let g:pathogen_disabled = []
+if has("patch-7.3.598")
+  call add(g:pathogen_disabled, 'clang_complete')
+else
+  call add(g:pathogen_disabled, 'YouCompleteMe')
 endif
 
 runtime bundle/vim-pathogen/autoload/pathogen.vim
