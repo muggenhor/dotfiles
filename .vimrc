@@ -154,7 +154,7 @@ endif
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
 
-if filereadable(expand("~/.vim/bundle/vim-airline/plugin/airline.vim"))
+if globpath(&runtimepath, "plugin/airline.vim")
   set laststatus=2 " Always display a status line when airline provides it
 endif
 
