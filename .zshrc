@@ -23,6 +23,10 @@ setopt histexpiredupsfirst # If the internal history needs to be trimmed to add 
 			   # a duplicate to be lost before losing a unique event from the list UNSET
 setopt histignoredups      # Do not enter command lines into the history list if they are
                            # duplicates of the previous event UNSET
+setopt histignorealldups   # Do not enter command lines into the history list if they are duplicates
+                           # of any previously entered command
+setopt histsavenodups      # When writing out the history file, older commands that duplicate newer
+                           # ones are omitted.
 
 export EDITOR=vim
 export PAGER=less
