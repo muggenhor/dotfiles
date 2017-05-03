@@ -492,6 +492,10 @@ if (( ${+commands[autojump]} )); then
 }
 fi
 
+if (( ${+commands[gpg2]} )); then
+    alias gpg=gpg2
+fi
+
 viman() {
 	vim -c "Man ${1}${2:+ ${2}}" -c 'silent only'
 }

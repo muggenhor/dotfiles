@@ -169,6 +169,10 @@ else
   call add(g:pathogen_disabled, 'YouCompleteMe')
 endif
 
+if executable("gpg2")
+  let g:GPGExecutable = "gpg2 --trust-model always"
+endif
+
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
 
