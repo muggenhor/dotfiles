@@ -169,6 +169,11 @@ else
   call add(g:pathogen_disabled, 'YouCompleteMe')
 endif
 
+if isdirectory("/usr/share/vim-youcompleteme")
+  call add(g:pathogen_disabled, 'YouCompleteMe')
+  set runtimepath+=/usr/share/vim-youcompleteme
+endif
+
 if executable("gpg2")
   let g:GPGExecutable = "gpg2 --trust-model always"
 endif
