@@ -87,3 +87,6 @@
 [submodule ".vim/bundle/vim-jinja2-syntax"]
 	path = .vim/bundle/vim-jinja2-syntax
 	url = https://github.com/Glench/Vim-Jinja2-Syntax.git
+[submodule ".vim/bundle/vimp4python"]
+	path = .vim/bundle/vimp4python
+	url = https://github.com/jpflouret/vimp4python.git
