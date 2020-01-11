@@ -1,5 +1,8 @@
 ! vim: set ft=xdefaults:
 
+XTerm*utf8: always
+xterm*utf8: always
+
 xterm*foreground: gray90
 xterm*background: black
 xterm*saveLines: 8192
