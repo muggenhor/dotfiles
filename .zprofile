@@ -1,3 +1,8 @@
+# Honor system-wide environment variables
+if [[ -f /etc/profile ]]; then
+	source /etc/profile
+fi
+
 () {
 	setopt NULL_GLOB
         local dir
