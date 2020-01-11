@@ -177,8 +177,8 @@ function _enable_dircolors() {
     fi
 }
 
-if [[ -x /usr/bin/dircolors ]]; then
-    _enable_dircolors /usr/bin/dircolors
+if (( ${+commands[dircolors]} )); then
+    _enable_dircolors dircolors
     alias ls='ls -v --color=auto'
 
     alias grep='grep --color=auto'
