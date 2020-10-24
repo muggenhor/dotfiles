@@ -13,6 +13,8 @@ xterm*termName: xterm-256color
 ! xterm*faceName: :lang=ar:style=Regular:spacing=mono
 ! xterm*faceName: :lang=ar:style=Book:spacing=mono
 xterm*faceName: :family=DejaVu Sans Mono
+! from APT package fonts-wqy-microhei
+xterm*faceNameDoublesize: WenQuanYi Micro Hei:antialias=true:pixelsize=18
 xterm*faceSize: 10
 
 //! In case the solarized theme wasn't loaded dynamically
@@ -26,6 +28,8 @@ XTerm*termName: xterm-256color
 ! XTerm*faceName: :lang=ar:style=Regular:spacing=mono
 ! XTerm*faceName: :lang=ar:style=Book:spacing=mono
 XTerm*faceName: :family=DejaVu Sans Mono
+! from APT package fonts-wqy-microhei
+XTerm*faceNameDoublesize: WenQuanYi Micro Hei:antialias=true:pixelsize=18
 XTerm*faceSize: 10
 
 //! In case the solarized theme wasn't loaded dynamically
