@@ -92,4 +92,4 @@
 	url = https://github.com/jpflouret/vimp4python.git
 [submodule "tmux-colors-solarized"]
 	path = tmux-colors-solarized
-	url = https://github.com/seebi/tmux-colors-solarized.git
+	url = https://github.com/solarized/tmux-colors-solarized.git
