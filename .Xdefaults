@@ -3,6 +3,8 @@
 XTerm*utf8: always
 xterm*utf8: always
 
+#include "git/dotfiles/solarized-xresources/Xresources.dark"
+
 xterm*foreground: gray90
 xterm*background: black
 xterm*saveLines: 8192
