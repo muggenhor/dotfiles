@@ -15,7 +15,7 @@ xterm*termName: xterm-256color
 xterm*faceName: :family=DejaVu Sans Mono
 ! from APT package fonts-wqy-microhei
 xterm*faceNameDoublesize: WenQuanYi Micro Hei:antialias=true:pixelsize=18
-xterm*faceSize: 10
+xterm*faceSize: 12
 
 //! In case the solarized theme wasn't loaded dynamically
 xterm*dynamicColors: true
@@ -30,7 +30,7 @@ XTerm*termName: xterm-256color
 XTerm*faceName: :family=DejaVu Sans Mono
 ! from APT package fonts-wqy-microhei
 XTerm*faceNameDoublesize: WenQuanYi Micro Hei:antialias=true:pixelsize=18
-XTerm*faceSize: 10
+XTerm*faceSize: 12
 
 //! In case the solarized theme wasn't loaded dynamically
 XTerm*dynamicColors: true
