@@ -183,6 +183,7 @@ execute pathogen#infect()
 
 if globpath(&runtimepath, "plugin/airline.vim") != ""
   set laststatus=2 " Always display a status line when airline provides it
+  let g:airline_section_z = airline#section#create(['windowswap', '%3p%% ', 'linenr', ':%3v ', '(%3o) '])
 endif
 
 let g:solarized_termcolors=256
